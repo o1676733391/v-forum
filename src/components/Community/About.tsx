@@ -67,7 +67,7 @@ const About: React.FC<AboutProps> = ({
     setImageLoading(true);
     try {
       const imageRef = ref(storage, `communities/${communityData.id}/image`);
-      await uploadString(imagestateRef, selectedFile, "data_url");
+      await uploadString(imageRef, selectedFile, "data_url");
       const downloadURL = await getDownloadURL(imageRef);
       await updateDoc(doc(firestore, "communities", communityData.id), {
         imageURL: downloadURL,
