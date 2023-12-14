@@ -1,0 +1,64 @@
+PlantUML Class Diagram for Online Community System
+Code snippet
+@startuml
+' Define classes
+class User {
+  + String username
+  + String password
+  + List<Community> communities
+  + List<Post> posts
+  + List<Comment> comments
+  + void createPost(String content, Community community)
+  + void createComment(String content, Post post)
+  + void joinCommunity(Community community)
+  + void leaveCommunity(Community community)
+}
+
+class Community {
+  + String name
+  + String description
+  + List<User> members
+  + List<Post> posts
+  + User owner
+  + boolean isPublic
+  + void addMember(User user)
+  + void removeMember(User user)
+  + void createPost(User user, String content)
+}
+
+class Post {
+  + String content
+  + Date createdDate
+  + User author
+  + Community community
+  + List<Comment> comments
+  + int upvoteCount
+  + int downvoteCount
+  + void addComment(User user, String content)
+  + void upvote(User user)
+  + void downvote(User user)
+}
+
+class Comment {
+  + String content
+  + Date createdDate
+  + User author
+  + Post post
+  + int upvoteCount
+  + int downvoteCount
+  + void upvote(User user)
+  + void downvote(User user)
+}
+
+' Define relationships
+User --> Community : joins
+User --> Post : creates
+User --> Comment : creates
+Community --> Post : contains
+Community --> User : has_member
+Post --> Comment : contains
+Post --> User : author
+Comment --> User : author
+Comment --> Post : belongs_to
+
+@enduml

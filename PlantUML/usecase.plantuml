@@ -1,0 +1,43 @@
+
+@startuml
+left to right direction
+rectangle "Authentication" {
+    usecase "Verify permision" as verify
+    usecase "LogIn" as login
+    usecase "SignUp" as register
+}
+left to right direction
+actor "User" as user
+actor "Administrator" as admin
+rectangle "Forum Web App" {
+    usecase "Leave community" as UC1
+    usecase "Create community" as UC2
+    usecase "Create post" as UC3
+    usecase "Create comment" as UC4
+    usecase "Delete post" as UC5
+    usecase "Delete comment" as UC6
+    usecase "Delete account" as UC7
+    usecase "Delete community" as UC8
+    usecase "Join community" as UC9
+    usecase "Vote post" as UC10
+    usecase "Vote comment" as UC11
+}
+UC3 --> UC9 : <<include>>
+UC5 --> UC3 : <<include>>
+UC1 --> UC9 : <<include>>
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+user --> UC5
+user --> UC6
+user --> UC9
+user --> UC10
+user --> UC11
+admin --> UC7
+admin --> UC8
+verify --> login : <<extends>>
+verify --> register : <<extends>>
+verify --> user : <<include>>
+verify --> admin : <<include>>
+@enduml
