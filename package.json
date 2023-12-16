@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^1.8.6",
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
+    "caniuse-lite": "^1.0.30001570",
     "firebase": "^9.16.0",
     "firebase-admin": "^11.5.0",
     "firebase-functions": "^4.2.0",
